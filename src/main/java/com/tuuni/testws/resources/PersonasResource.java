@@ -20,14 +20,14 @@ public class PersonasResource {
         personas.add(new Persona(3, "Persona 3", 40));
     }
 
-    // (Extra útil para ver todo)
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Persona> listarJson() {
         return personas;
     }
 
-    // ✅ Requerimiento: "Adicionar una nueva Persona a la lista."
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,15 +49,14 @@ public class PersonasResource {
                     .build();
         }
 
-        // fuerza cálculo salario (si llegó edad)
+       
         nueva.setEdad(nueva.getEdad());
 
         personas.add(nueva);
         return Response.status(Response.Status.CREATED).entity(nueva).build();
     }
 
-    // Requerimiento: "Nuevo servicio REST para conocer salario promedio en XML"
-    // Para evitar problemas de JAXB, devolvemos XML como String.
+
     @GET
     @Path("/promedio-salarios")
     @Produces(MediaType.APPLICATION_XML)
@@ -84,3 +83,4 @@ public class PersonasResource {
         return Map.of("suma", suma);
     }
 }
+
